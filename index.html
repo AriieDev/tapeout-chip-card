@@ -397,7 +397,14 @@ function siteUrl(){
 }
 function shareText(R){
   const u=siteUrl();
-  return `我今天的 TapeOut 芯片人格：【${R.persona[0]}】\n宜：${R.yi}｜忌：${R.ji}\n幸运电路 #${R.lucky} · NAND 签${R.nandOut?"⚡高电平":"◌低电平"}\n巨兽电路 #2075 链上实算（BSC #${R.block}），不信自己验 🔍\n${u?"测测你的 👉 "+u+"\n":""}${CONFIG.TAGS} ${CONFIG.MENTION}`;
+  const parts=[
+    `我今天的 TapeOut 芯片人格是\n【${R.persona[0]}】`,
+    `✅ 宜：${R.yi}\n❌ 忌：${R.ji}\n🍀 幸运电路 #${R.lucky}`,
+    `结果由 BSC 链上电路实时算出，不信可以自己验 🔍`
+  ];
+  if (u) parts.push(`测测你的 👇\n${u}`);
+  parts.push(`${CONFIG.TAGS} ${CONFIG.MENTION}`);
+  return parts.join("\n\n");
 }
 const intentUrl = t => "https://x.com/intent/post?text="+encodeURIComponent(t);
 const isTouch = () => matchMedia("(pointer:coarse)").matches || /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent);
