@@ -1,1 +1,0 @@
-# tapeout-chip-card
